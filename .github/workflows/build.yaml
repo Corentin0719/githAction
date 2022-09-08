@@ -26,7 +26,10 @@ jobs:
                     -Dsonar.projectKey=Corentin0719_githAction
                     -Dsonar.organization=corentin0719
               
-                 
+              - uses: actions/checkout@v2
+              - name: Install NPM dependencies
+                run: |
+                 npm install --production --unsafe-perm 
                 #check vulnerabilities 
               - name: Archive dependency check reports
                 uses: actions/upload-artifact@v1
@@ -36,10 +39,6 @@ jobs:
                     
               #dependencies installation
            
-              - uses: actions/checkout@v2
-              - name: Install NPM dependencies
-                run: |
-                 npm install --production --unsafe-perm 
 
 
     build:
