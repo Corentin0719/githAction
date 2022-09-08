@@ -31,16 +31,16 @@ jobs:
                     -Dsonar.projectKey=Corentin0719_githAction
                     -Dsonar.organization=corentin0719
               
-                - uses: sburris/dependency-check-action@master
-                  with:
-                    Project-Name: TestApp
+              - uses: sburris/dependency-check-action@master
+                with:
+                  Project-Name: TestApp
               
                 #check vulnerabilities 
               - name: Archive dependency check reports
                 uses: actions/upload-artifact@v1
                 with:
                     name: reports
-                    path: 
+                    path: .
                     
               #dependencies installation
            
