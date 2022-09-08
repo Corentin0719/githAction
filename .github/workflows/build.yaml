@@ -58,9 +58,7 @@ jobs:
             repository: corentin0719/cd
             tag_with_sha: true
 
-    DockerAnal:
-        runs-on: ubuntu-latest
-        steps:
+
         - name: Run Trivy vulnerability scanner
           uses: aquasecurity/trivy-action@master
           with:
