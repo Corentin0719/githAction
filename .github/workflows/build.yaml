@@ -25,12 +25,7 @@ jobs:
                     # mandatory
                     -Dsonar.projectKey=Corentin0719_githAction
                     -Dsonar.organization=corentin0719
-               #dependencies installation
-           
-              - uses: actions/checkout@v2
-              - name: Install NPM dependencies
-                run: |
-                 npm install --production --unsafe-perm 
+              
                  
                 #check vulnerabilities 
               - name: Archive dependency check reports
@@ -39,7 +34,12 @@ jobs:
                     name: reports
                     path: reports
                     
-             
+              #dependencies installation
+           
+              - uses: actions/checkout@v2
+              - name: Install NPM dependencies
+                run: |
+                 npm install --production --unsafe-perm 
 
 
     build:
