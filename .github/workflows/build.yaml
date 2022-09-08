@@ -60,14 +60,11 @@ jobs:
 
         - name: Add SHORT_SHA env property with commit short sha
           run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-          
-        - name: image-ref string
-          run: echo "docker.io/corentin0719/cd:${ SHORT_SHA }" >> $IMAGE-REF
-            
+
         - name: Run Trivy vulnerability scanner
           uses: aquasecurity/trivy-action@master
           with:
-              image-ref: ${IMAGE_REF}
+              image-ref: format('docker.io/corentin0719/cd:{1}', ${SHORT_SHA})
               format: 'table'
               exit-code: '1'
               ignore-unfixed: true
