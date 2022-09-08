@@ -42,15 +42,7 @@ jobs:
                     name: reports
                     path: .
                     
-              - name: Run Trivy vulnerability scanner
-                uses: aquasecurity/trivy-action@master
-                with:
-                  image-ref: 'docker.io/<your-username>/<your-image>:${{ github.sha }}'
-                  format: 'table'
-                  exit-code: '1'
-                  ignore-unfixed: true
-                  vuln-type: 'os,library'
-                  severity: 'CRITICAL,HIGH'
+
 
 
     build:
@@ -66,5 +58,17 @@ jobs:
             repository: corentin0719/cd
             tag_with_sha: true
 
+    DockerAnal:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Run Trivy vulnerability scanner
+          uses: aquasecurity/trivy-action@master
+          with:
+              image-ref: 'docker.io/corentin0719/mywebserver:${{ github.sha }}'
+              format: 'table'
+              exit-code: '1'
+              ignore-unfixed: true
+              vuln-type: 'os,library'
+              severity: 'CRITICAL,HIGH'
 
             
